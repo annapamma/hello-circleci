@@ -1,0 +1,12 @@
+{
+  "name": "CircleCI-Challenge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/annapamma/hello-circleci",
+  "author": "Anna Calinawan",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "cypress": "^3.3.2"
+  }
+}
