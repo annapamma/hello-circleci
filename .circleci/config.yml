@@ -20,17 +20,17 @@ jobs:
             libasound2 \
             xvfb
       - run:
-          name: Installs yarn dependencies
+          name: Installs packages with yarn
           command: yarn install
       - run:
           name: Installs flask and dependencies
           command: pip install -r requirements.txt
       - run:
-          name: Serves flask app in the background
-          command: python app.py >> nohup.log 2>&1 &
-      - run:
-          name: Runs cypress tests with yarn
-          command: yarn cypress run
+          name: Serves flask app and runs cypress tests with yarn
+          command: python app.py >> nohup.log 2>&1 & yarn cypress run
+#      - run:
+#          name: Runs cypress tests with yarn
+#          command: yarn cypress run
 
 workflows:
   test_basic_html:
