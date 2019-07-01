@@ -28,9 +28,6 @@ jobs:
       - run:
           name: Serves flask app and runs cypress tests with yarn
           command: python app.py >> nohup.log 2>&1 & yarn cypress run
-#      - run:
-#          name: Runs cypress tests with yarn
-#          command: yarn cypress run
 
 workflows:
   test_basic_html:
