@@ -1,6 +1,6 @@
 context('Check Button Messages', () => {
   beforeEach(() => {
-    cy.visit('http://127.0.0.1:5000/')
+    cy.visit('localhost:5000/')
   });
 
   it("h3 inner text starts as 'Hello World!'", () => {
