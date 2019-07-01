@@ -1,15 +1,33 @@
-# Use the latest 2.1 version of CircleCI pipeline processing engine, see https://circleci.com/docs/2.0/configuration-reference/
 version: 2.1
 
-# Use a package of configuration called an orb, see https://circleci.com/docs/2.0/orb-intro/
-orbs:
-  # Declare a dependency on the welcome-orb
-  welcome: circleci/welcome-orb@0.3.1
+jobs:
+  serve_and_test:
+    docker:
+      - image: nikolaik/python-nodejs:python3.5-nodejs12
+    working_directory: ~/app
+    steps:
+      - checkout
+      - name: Installs cypress dependencies
+        run: |
+          apt-get update && \
+          apt-get install -y \
+          libgtk2.0-0 \
+          libnotify-dev \
+          libgconf-2-4 \
+          libnss3 \
+          libxss1 \
+          libasound2 \
+          xvfb
+      - name: Installs yarn dependencies
+        run: yarn install
+      - name: Installs flask and dependencies
+        run: pip install -r requirements.txt
+      - name: Serves flask app in the background
+        run: python app.py >> nohup.log 2>&1 &
+      - name: Runs cypress tests with yarn
+        run: yarn cypress run
 
-# Orchestrate or schedule a set of jobs, see https://circleci.com/docs/2.0/workflows/
 workflows:
-  # Name the workflow "Welcome"
-  Welcome:
-    # Run the welcome/run job in its own container
+  test_basic_html:
     jobs:
-      - welcome/run
+      - serve_and_test
