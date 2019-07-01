@@ -7,25 +7,30 @@ jobs:
     working_directory: ~/app
     steps:
       - checkout
-      - name: Installs cypress dependencies
-        run: |
-          apt-get update && \
-          apt-get install -y \
-          libgtk2.0-0 \
-          libnotify-dev \
-          libgconf-2-4 \
-          libnss3 \
-          libxss1 \
-          libasound2 \
-          xvfb
-      - name: Installs yarn dependencies
-        run: yarn install
-      - name: Installs flask and dependencies
-        run: pip install -r requirements.txt
-      - name: Serves flask app in the background
-        run: python app.py >> nohup.log 2>&1 &
-      - name: Runs cypress tests with yarn
-        run: yarn cypress run
+      - run:
+          name: Installs cypress dependencies
+          command: |
+            apt-get update && \
+            apt-get install -y \
+            libgtk2.0-0 \
+            libnotify-dev \
+            libgconf-2-4 \
+            libnss3 \
+            libxss1 \
+            libasound2 \
+            xvfb
+      - run:
+          name: Installs yarn dependencies
+          command: yarn install
+      - run:
+          name: Installs flask and dependencies
+          command: pip install -r requirements.txt
+      - run:
+          name: Serves flask app in the background
+          command: python app.py >> nohup.log 2>&1 &
+      - run:
+          name: Runs cypress tests with yarn
+          command: yarn cypress run
 
 workflows:
   test_basic_html:
