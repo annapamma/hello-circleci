@@ -44,9 +44,9 @@ jobs:
             s3://annapamma/circleci-challenge
 
   workflows:
-  test_and_deploy:
-    jobs:
-      - serve_and_test
-      - deploy:
-          requires:
-            - serve_and_test
+    test_and_deploy:
+      jobs:
+        - serve_and_test
+        - deploy:
+            requires:
+              - serve_and_test
