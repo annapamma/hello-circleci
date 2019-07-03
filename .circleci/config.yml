@@ -43,10 +43,10 @@ jobs:
             aws s3 sync ~/app/templates/ \
             s3://annapamma/circleci-challenge
 
-  workflows:
-    test_and_deploy:
-      jobs:
-        - serve_and_test
-        - deploy:
-            requires:
-              - serve_and_test
+workflows:
+  test_and_deploy:
+    jobs:
+      - serve_and_test
+      - deploy:
+          requires:
+            - serve_and_test
