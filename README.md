@@ -20,4 +20,4 @@ Did it end too soon? Just click "Wait, come back!"
 
 <img width="502" alt="hello-again" src="https://user-images.githubusercontent.com/22031658/60442316-c61bba00-9be6-11e9-8c4a-c89fe7d143ab.png">
 
-You can visit the application at: (https://annapamma.s3.amazonaws.com/circleci-challenge/index.html)
+You can visit the application at: https://annapamma.s3.amazonaws.com/circleci-challenge/index.html
