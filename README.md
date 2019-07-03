@@ -6,8 +6,7 @@ This little web application doesn't know whether it's coming or going.
 
 This is a simple web application where clicking the button changes the message shown. Built with HTML and JavaScript and tested with Cypress. 
 
-This never-ending conversation uses CircleCI to run automated tests. 
-
+This never-ending conversation uses CircleCI to run automated tests and for continuous deployment. 
 
 Starting off with a warm welcome
 
@@ -20,3 +19,5 @@ Conversation over? Just click "Gotta go!"
 Did it end too soon? Just click "Wait, come back!"
 
 <img width="502" alt="hello-again" src="https://user-images.githubusercontent.com/22031658/60442316-c61bba00-9be6-11e9-8c4a-c89fe7d143ab.png">
+
+You can visit the application at: (https://annapamma.s3.amazonaws.com/circleci-challenge/index.html)
