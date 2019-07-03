@@ -28,8 +28,25 @@ jobs:
       - run:
           name: Serves flask app and runs cypress tests with yarn
           command: python app.py >> nohup.log 2>&1 & yarn cypress run
+  deploy:
+    docker:
+      - image: nikolaik/python-nodejs:python3.5-nodejs12
+    working_directory: ~/app
+    steps:
+      - checkout
+      - run:
+          name: Install AWS CLI
+          command: pip install awscli
+      - run:
+          name: Deploy to S3
+          command: |
+            aws s3 sync ~/app/templates/ \
+            s3://annapamma/circleci-challenge
 
-workflows:
-  test_basic_html:
+  workflows:
+  test_and_deploy:
     jobs:
       - serve_and_test
+      - deploy:
+          requires:
+            - serve_and_test
